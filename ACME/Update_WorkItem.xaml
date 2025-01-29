@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_Hashcode" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
   </x:Members>
   <sap:VirtualizedContainerService.HintSize>1212,2642</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
@@ -112,19 +113,19 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="1077,2484" sap2010:WorkflowViewState.IdRef="Sequence_11">
+  <Sequence sap:VirtualizedContainerService.HintSize="885.6000000000001,2883.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: ACME System 1 - Work Items" sap:VirtualizedContainerService.HintSize="518,2461" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="50e845ce-db3d-4a19-b0e7-891a82a5ce18" Version="V2" WindowResize="Restore">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: ACME System 1 - Work Items" sap:VirtualizedContainerService.HintSize="516.8,2860" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="50e845ce-db3d-4a19-b0e7-891a82a5ce18" Version="V2" WindowResize="Restore">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="484,2221" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="483.2,2620" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="strStatus" />
             </Sequence.Variables>
@@ -134,7 +135,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" ContinueOnError="True" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="Activate_1">
+            <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" ContinueOnError="True" sap:VirtualizedContainerService.HintSize="449.6,118.4" sap2010:WorkflowViewState.IdRef="Activate_1">
               <ui:Activate.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="71cbdca2-f3a9-44b7-a9c4-b91ed9ae5ace">
                   <ui:Target.TimeoutMS>
@@ -146,7 +147,7 @@
                 </ui:Target>
               </ui:Activate.Target>
             </ui:Activate>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Update Work Item'" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50e845ce-db3d-4a19-b0e7-891a82a5ce18" Version="V4">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Update Work Item'" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50e845ce-db3d-4a19-b0e7-891a82a5ce18" Version="V4">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/work-items/103223847" CVScreenId="9ab99f39-5be1-4555-9bc0-1259296282c9" DesignTimeRectangle="909, 512, 141, 31" DesignTimeScaleFactor="0.8999999761581421" ElementType="Button" FullSelectorArgument="&lt;webctrl aaname='*Update Work Item' tag='BUTTON' /&gt;" Guid="a1b7d990-3531-487a-b4cd-533872f2fa34" InformativeScreenshot="3d0883e90b1da96e04207797e4ed0a8f.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='ACME System*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
               </uix:NClick.Target>
@@ -161,14 +162,35 @@
                 </uix:VerifyExecutionOptions>
               </uix:NClick.VerifyOptions>
             </uix:NClick>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_WorkItemStatus - Invoke Workflow File (ACME\Update_WorkItemStatus.xaml)" sap:VirtualizedContainerService.HintSize="450,204" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ACME\Update_WorkItemStatus.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_WorkItemStatus - Invoke Workflow File (ACME\Update_WorkItemStatus.xaml)" sap:VirtualizedContainerService.HintSize="449.6,206.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ACME\Update_WorkItemStatus.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_Hashcode">[in_Hashcode]</InArgument>
                 <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <uix:NNavigateBrowser Action="Refresh" DisplayName="Navigate Browser - Refresh" sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_2" Version="V4" />
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Status'" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50e845ce-db3d-4a19-b0e7-891a82a5ce18" Version="V4">
+            <If Condition="[in_TransactionItem.SpecificContent(&quot;WIID&quot;).ToString.EndsWith(&quot;8&quot;) Or&#xD;&#xA;in_TransactionItem.SpecificContent(&quot;WIID&quot;).ToString.EndsWith(&quot;9&quot;)]" sap:VirtualizedContainerService.HintSize="449.6,563.2" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,227.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,167.2" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Warn" Message="[&quot;Browser Refresh is Disabled&quot;]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NNavigateBrowser Action="Refresh" DisplayName="Navigate Browser - Refresh" sap:VirtualizedContainerService.HintSize="382.4,105.6" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_2" Version="V4" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Status'" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50e845ce-db3d-4a19-b0e7-891a82a5ce18" Version="V4">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/work-items//103223849" CVScreenId="23b4e9de-50f3-4100-9198-2124209ec476" DesignTimeRectangle="909, 449, 43, 14" DesignTimeScaleFactor="0.8999999761581421" FullSelectorArgument="&lt;webctrl aaname='Status:' innertext='Status:' /&gt;" Guid="d27f77a2-18bf-4289-a454-47964e9cdfe9" InformativeScreenshot="d6402cfe845c10bf488260a1f500f558.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='ACME System 1 - Work Items' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
               </uix:NClick.Target>
@@ -183,7 +205,7 @@
                 </uix:VerifyExecutionOptions>
               </uix:NClick.VerifyOptions>
             </uix:NClick>
-            <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" ContinueOnError="True" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="Activate_4">
+            <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" ContinueOnError="True" sap:VirtualizedContainerService.HintSize="449.6,118.4" sap2010:WorkflowViewState.IdRef="Activate_4">
               <ui:Activate.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="71cbdca2-f3a9-44b7-a9c4-b91ed9ae5ace">
                   <ui:Target.TimeoutMS>
@@ -195,7 +217,7 @@
                 </ui:Target>
               </ui:Activate.Target>
             </ui:Activate>
-            <Assign sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap:VirtualizedContainerService.HintSize="449.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[strStatus]</OutArgument>
               </Assign.To>
@@ -205,7 +227,7 @@
                 </InArgument>
               </Assign.Value>
             </Assign>
-            <uix:NGetText DelayBefore="2" DisplayName="Get Text 'WI Details'" sap:VirtualizedContainerService.HintSize="450,189" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="50e845ce-db3d-4a19-b0e7-891a82a5ce18" TextString="[strStatus]" Version="V4">
+            <uix:NGetText DelayBefore="2" DisplayName="Get Text 'WI Details'" sap:VirtualizedContainerService.HintSize="449.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="50e845ce-db3d-4a19-b0e7-891a82a5ce18" TextString="[strStatus]" Version="V4">
               <uix:NGetText.Target>
                 <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/work-items//103223858" DesignTimeRectangle="909, 412, 336, 72" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='DIV' visibleinnertext='Work Item Details*' /&gt;&lt;webctrl tag='P' idx='1' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='DIV' visibleinnertext='Work Item Details*' /&gt;&lt;webctrl tag='P' type='' class='' aaname='                              103223858                              Calculate Client Security Hash                              Completed                              2021-08-31                         ' /&gt;" Guid="da0e8407-0ee4-4dd9-ae73-803e717e1ae9" ImageBase64="" InformativeScreenshot="699b805059555770d9e3838cbc30ffa2.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='ACME System*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
               </uix:NGetText.Target>
@@ -215,7 +237,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NGetText>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="449.6,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
               <ui:CommentOut.Body>
                 <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,268" sap2010:WorkflowViewState.IdRef="Sequence_13">
                   <sap:WorkflowViewStateService.ViewState>
@@ -248,8 +270,8 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[strStatus]" />
-            <If Condition="[strStatus.ToString.Trim.Contains(&quot;Completed&quot;)]" DisplayName="If - Check the Status post processing" sap:VirtualizedContainerService.HintSize="450,618" sap2010:WorkflowViewState.IdRef="If_1">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="449.6,176" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[strStatus]" />
+            <If Condition="[strStatus.ToString.Trim.Contains(&quot;Completed&quot;)]" DisplayName="If - Check the Status post processing" sap:VirtualizedContainerService.HintSize="449.6,564" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -257,14 +279,14 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,254" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,227.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,166" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Work Item is processed successfully!&quot;]">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,167.2" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Work Item is processed successfully!&quot;]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -274,14 +296,14 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,201" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,173.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Throw Exception="[new System.Exception(&quot;Work Item is not processed&quot;)]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_1">
+                  <Throw Exception="[new System.Exception(&quot;Work Item is not processed&quot;)]" sap:VirtualizedContainerService.HintSize="382.4,113.6" sap2010:WorkflowViewState.IdRef="Throw_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>

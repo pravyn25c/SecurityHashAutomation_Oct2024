@@ -7,15 +7,17 @@
     "UiPath.Excel.Activities": "[2.24.1]",
     "UiPath.Mail.Activities": "[1.23.11]",
     "UiPath.MicrosoftOffice365.Activities": "[2.7.22]",
+    "UiPath.Pipelines.Activities": "[2.0.0]",
     "UiPath.System.Activities": "[24.11.0-preview]",
     "UiPath.Testing.Activities": "[24.10.2-preview]",
-    "UiPath.UIAutomation.Activities": "[24.11.1-preview]"
+    "UiPath.UIAutomation.Activities": "[24.11.1-preview]",
+    "UiPath.WebAPI.Activities": "[1.20.1]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "24.10.5.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "1.0.1",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -53,14 +55,14 @@
         "fileName": "Tests\\GetTransactionDataTestCase.xaml"
       },
       {
-        "editingStatus": "InProgress",
+        "editingStatus": "Publishable",
         "testCaseId": "6a4925d4-7852-4813-88e1-a7ed8cf3b30d",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\InitAllApplicationsTestCase.xaml"
       },
       {
-        "editingStatus": "InProgress",
+        "editingStatus": "Publishable",
         "testCaseId": "f24e14d4-25ea-4015-92e3-1d5c8050e031",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
@@ -74,7 +76,7 @@
         "fileName": "Tests\\MainTestCase.xaml"
       },
       {
-        "editingStatus": "InProgress",
+        "editingStatus": "Publishable",
         "testCaseId": "06162232-c563-4563-bf06-ab410ba4be60",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",

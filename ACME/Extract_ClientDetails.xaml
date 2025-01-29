@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Extract_ClientDetails" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uast="clr-namespace:UiPath.Activities.System.Text;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Extract_ClientDetails" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uast="clr-namespace:UiPath.Activities.System.Text;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:utam="clr-namespace:UiPath.Testing.Activities.Mocks;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -47,6 +47,7 @@
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Linq.Expressions</x:String>
       <x:String>UiPath.Activities.System.Text</x:String>
+      <x:String>UiPath.Testing.Activities.Mocks</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -116,19 +117,19 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="1077,2548" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence sap:VirtualizedContainerService.HintSize="1270,3175" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: ACME System 1 - Work Items" sap:VirtualizedContainerService.HintSize="547,2525" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="50e845ce-db3d-4a19-b0e7-891a82a5ce18" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: ACME System 1 - Work Items" sap:VirtualizedContainerService.HintSize="647,3152" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="50e845ce-db3d-4a19-b0e7-891a82a5ce18" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="513,2285" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="613,2872" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="strClientDetails" />
             </Sequence.Variables>
@@ -138,7 +139,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" ContinueOnError="True" sap:VirtualizedContainerService.HintSize="479,119" sap2010:WorkflowViewState.IdRef="Activate_1">
+            <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" ContinueOnError="True" sap:VirtualizedContainerService.HintSize="579,119" sap2010:WorkflowViewState.IdRef="Activate_1">
               <ui:Activate.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="71cbdca2-f3a9-44b7-a9c4-b91ed9ae5ace">
                   <ui:Target.TimeoutMS>
@@ -150,8 +151,38 @@
                 </ui:Target>
               </ui:Activate.Target>
             </ui:Activate>
-            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="479,114" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_Config(&quot;ACMESystemWIURL&quot;).ToString.Trim+&quot;\&quot;+in_TransactionItem.SpecificContent(&quot;WIID&quot;).ToString.Trim]" Version="V4" />
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,210" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <If Condition="[in_TransactionItem.SpecificContent(&quot;WIID&quot;).ToString.EndsWith(&quot;2&quot;) Or&#xA;in_TransactionItem.SpecificContent(&quot;WIID&quot;).ToString.EndsWith(&quot;6&quot;) Or&#xA;in_TransactionItem.SpecificContent(&quot;WIID&quot;).ToString.EndsWith(&quot;4&quot;)]" sap:VirtualizedContainerService.HintSize="579,432" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw Exception="[new uipath.core.BusinessRuleException(&quot;WI ends with 2/4/6&quot;)]" sap:VirtualizedContainerService.HintSize="382,113" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <utam:MockActivity MockedActivityIdRef="{x:Null}" DisplayName="Mock activity" sap:VirtualizedContainerService.HintSize="579,271" sap2010:WorkflowViewState.IdRef="MockActivity_1">
+              <Sequence sap:VirtualizedContainerService.HintSize="416,165" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="382,105" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_Config(&quot;ACMESystemWIURL&quot;).ToString.Trim+&quot;\&quot;+in_TransactionItem.SpecificContent(&quot;WIID&quot;).ToString.Trim]" Version="V4" />
+              </Sequence>
+            </utam:MockActivity>
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="579,210" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -187,7 +218,7 @@
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <uix:NGetText DisplayName="Get Text 'Client Details'" sap:VirtualizedContainerService.HintSize="479,189" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="50e845ce-db3d-4a19-b0e7-891a82a5ce18" TextString="[strClientDetails]" Version="V4">
+            <uix:NGetText DisplayName="Get Text 'Client Details'" sap:VirtualizedContainerService.HintSize="579,189" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="50e845ce-db3d-4a19-b0e7-891a82a5ce18" TextString="[strClientDetails]" Version="V4">
               <uix:NGetText.Target>
                 <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/work-items//103223855" DesignTimeRectangle="546, 412, 336, 54" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='DIV' visibleinnertext='Client Information Details*' /&gt;&lt;webctrl tag='P' /&gt;" Guid="7ce98db8-70a8-4e20-810a-80cb6427a814" ImageBase64="" InformativeScreenshot="cc40e507b9d6bf1ab1aa676e2e307ff9.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='ACME System 1 - Work Items' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
               </uix:NGetText.Target>

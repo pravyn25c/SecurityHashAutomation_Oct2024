@@ -1,3 +1,9 @@
 {
-  "issueKeyTestcaseValues": {}
+  "issueKeyTestcaseValues": {},
+  "testManagerBasePath": "https://cloud.uipath.com/deloiooyjmox/defaulttenant/testmanager_/",
+  "defaultProject": {
+    "id": "9d7d95c1-5f45-0000-85d6-0b475563a26f",
+    "name": "SampleTestProject",
+    "key": "SAMPLE"
+  }
 }
